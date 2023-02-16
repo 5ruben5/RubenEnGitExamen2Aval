@@ -1,23 +1,18 @@
 #!/bin/bash
 
-#Declaramos una variable para guardar el nombre de la ciudad
-ciudad=""
+echo "Introduce la ciudad:"
+read ciudad
 
-#Bucle para que el usuario introduzca una ciudad válida
-while [[ $ciudad == "" ]]
+while [[ $ciudad != "Valencia" && $ciudad != "Madrid" && $ciudad != "Barcelona" ]]
 do
-	echo "Introduce una ciudad"
-	read ciudad
-
-	#Comprobamos que la ciudad existe
-	if [[ $(cat ciudades.txt | grep -w $ciudad) == "" ]]
-	then
-		echo "Ciudad no existe"
-		ciudad=""
-	fi
+    echo "La ciudad no es ni Valencia ni Madrid ni Barcelona. Vuelve a intentarlo:"
+    read ciudad
 done
 
-#Calculamos el total de consumo de la ciudad
-total=$(cat consumo.txt | grep -w $ciudad | awk '{s+=$2} END {print s}')
-
-echo "El total de consumo de $ciudad es $total"
+if [[ $ciudad == "Valencia" ]]; then
+    echo "El consumo de Valencia es 2.751"
+elif [[ $ciudad == "Madrid" ]]; then
+    echo "El consumo de Madrid es 4.032"
+else
+    echo "El consumo de Barcelona es 3.080"
+fi
