@@ -14,4 +14,4 @@ do
   fi
 done < consumos.txt
 
-echo "La ciudad con menor consumo es $ciudad con un consumo de $menor"
+echo "La ciudad con menor consumo es $ciudad su consumo es de $menor"
